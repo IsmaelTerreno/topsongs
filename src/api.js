@@ -1,4 +1,15 @@
- export const mockData = {
+import axios from 'axios';
+import { TOP_ALBUM_END_POINT, TOP_SONG_END_POINT } from './config';
+
+export const findTopAlbumsApi = async () => {
+    return await axios.get(TOP_ALBUM_END_POINT);
+}; 
+
+export const findTopSongsApi = async () => {
+    return await axios.get(TOP_SONG_END_POINT);
+};
+
+export const mockData = {
 	"feed":{
 		"author":{
 			"name":{

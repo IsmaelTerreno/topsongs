@@ -9,6 +9,7 @@ import LogoImg from './img/icon-app.png'
 import SearchIcon from '@material-ui/icons/Search';
 import InputBase from '@material-ui/core/InputBase';
 import Hidden from '@material-ui/core/Hidden';
+import { MAIN_APP_NAME } from './config';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -66,7 +67,6 @@ const useStyles = makeStyles((theme) => ({
 
 const TopBar = () => {
   const classes = useStyles();
-
   return (
     <div className={classes.root}>
       <AppBar position="fixed">
@@ -75,7 +75,7 @@ const TopBar = () => {
             <Avatar alt="Remy Sharp" src={LogoImg} />
           </IconButton>
           <Typography variant="h6" className={classes.title}>
-            Mr Dog
+            { MAIN_APP_NAME }
           </Typography>
             <Hidden only={['xs']}>
                 <div className={classes.search}>
