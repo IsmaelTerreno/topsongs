@@ -1,19 +1,10 @@
+import React, {useEffect} from 'react';
+import PropTypes from 'prop-types';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import { makeStyles } from '@material-ui/core/styles';
-import PropTypes from 'prop-types';
-import { mockData } from './api';
 import TopBar from './TopBar';
 import TabContent from './TabContent';
 import AlbumGrid from './AlbumGrid';
-
-const digestAlbumsData = (apiData) => {
-  return apiData.feed.entry.map((album) => {
-    return{
-      title: album.title.label,
-      coveImage: album['im:image'].filter(itemImg => itemImg.attributes.height === "170")[0].label
-    };
-  });
-};
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -22,8 +13,14 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const App = ({ topAlbums }) => { 
+const App = ({ 
+  topAlbums,
+  onLoad,
+}) => { 
   const classes = useStyles();
+  useEffect(() => {
+    onLoad();
+  });
   return (
     <>
       <CssBaseline />
@@ -37,11 +34,14 @@ const App = ({ topAlbums }) => {
 }
 
 App.defaultProps = {
-  topAlbums: digestAlbumsData(mockData),
+  topAlbums: [],
 };
 
 App.propTypes = {
   topAlbums: PropTypes.array,
+  topSongs: PropTypes.array,
+  onLoad: PropTypes.func,
+  onSearch: PropTypes.func,
 };
 
 export default App;

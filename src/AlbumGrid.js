@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import AlbumCard from './AlbumCard';
@@ -33,7 +34,7 @@ const AlbumGrid = ({albums}) => {
         alignItems="center"
         spacing={2}
       >
-        {albums.map((album, idx) => {
+        {albums && albums.map((album, idx) => {
           delayEffectTime += 150;
           return(
             <Grid item xs={6} xl={2} sm={3} lg={2} key={idx + album.title} >
@@ -57,5 +58,12 @@ const AlbumGrid = ({albums}) => {
   );
 };
 
+AlbumGrid.defaultProps = {
+  albums: [],
+};
+
+AlbumGrid.propTypes = {
+  albums: PropTypes.array,
+};
 
 export default AlbumGrid;

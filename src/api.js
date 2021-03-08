@@ -1,8 +1,19 @@
 import axios from 'axios';
 import { TOP_ALBUM_END_POINT, TOP_SONG_END_POINT } from './config';
 
+const digestAlbumsData = (apiData) => {
+	return apiData.feed.entry.map((album) => {
+		return{
+			title: album.title.label,
+			coveImage: album['im:image'].filter(itemImg => itemImg.attributes.height === "170")[0].label
+		};
+	});
+};
+
 export const findTopAlbumsApi = async () => {
-    return await axios.get(TOP_ALBUM_END_POINT);
+    const response =  await axios.get(TOP_ALBUM_END_POINT);
+	const albums = digestAlbumsData(response.data);
+	return albums;
 }; 
 
 export const findTopSongsApi = async () => {
