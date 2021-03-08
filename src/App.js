@@ -20,7 +20,7 @@ const App = ({
   const classes = useStyles();
   useEffect(() => {
     onLoad();
-  });
+  },[onLoad]);
   return (
     <>
       <CssBaseline />
