@@ -6,7 +6,7 @@ import Grow from '@material-ui/core/Grow';
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    padding: '0px',
+    paddingTop: '40px',
     margin: '0px',
     display: 'flex',
     alignItems: 'center',
@@ -36,7 +36,7 @@ const AlbumGrid = ({albums}) => {
         {albums.map((album, idx) => {
           delayEffectTime += 150;
           return(
-            <Grid item xs={6} xl={2} sm={3} key={idx + album.title} >
+            <Grid item xs={6} xl={2} sm={3} lg={2} key={idx + album.title} >
                 <Grow
                     in
                     style={{ transformOrigin: '0 0 0' }}

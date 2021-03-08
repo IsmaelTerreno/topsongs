@@ -24,6 +24,9 @@ const useStyles = makeStyles({
     width: '137px',
     textAlign: 'center',
     fontWeight: 'bold',
+  },
+  cardContent:{
+    height: '90px',
   }
 });
 
@@ -37,7 +40,7 @@ const AlbumCard = ({ image, title }) => {
           image={image}
           title={title}
         />
-        <CardContent>
+        <CardContent className={classes.cardContent}>
           <Typography variant="subtitle" gutterBottom className={classes.title} >
             {title}
           </Typography>

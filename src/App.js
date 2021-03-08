@@ -2,6 +2,8 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import { makeStyles } from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
 import { mockData } from './api';
+import TopBar from './TopBar';
+import TabContent from './TabContent';
 import AlbumGrid from './AlbumGrid';
 
 const digestAlbumsData = (apiData) => {
@@ -16,27 +18,30 @@ const digestAlbumsData = (apiData) => {
 const useStyles = makeStyles((theme) => ({
   root: {
     background: 'linear-gradient(180deg,#1e3264,#121212 40%)',
+    paddingTop: '64px',
   },
 }));
 
-const App = ({ albums }) => { 
+const App = ({ topAlbums }) => { 
   const classes = useStyles();
   return (
     <>
       <CssBaseline />
       <div className={classes.root}>
-        <AlbumGrid albums={albums} />
+        <TopBar />
+        <TabContent />
+        <AlbumGrid albums={topAlbums} />
       </div>
     </>
   );
 }
 
 App.defaultProps = {
-  albums: digestAlbumsData(mockData),
+  topAlbums: digestAlbumsData(mockData),
 };
 
 App.propTypes = {
-  albums: PropTypes.array,
+  topAlbums: PropTypes.array,
 };
 
 export default App;
