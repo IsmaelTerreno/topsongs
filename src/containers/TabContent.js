@@ -5,19 +5,6 @@ import {
     findTopSongs,
     addToFavorite
 } from "../redux/actions/songs";
-import { 
-    getAlbums,
-    getSongs,
-    getFavorite,
-} from "../redux/reducers/songs";
-
-const mapStateToProps = state => {
-    return {
-        topAlbums: getAlbums(state),
-        topSongs: getSongs(state),
-        favorite: getFavorite(state),
-    }
-};
   
 const mapDispatchToProps = dispatch => {
     return {
@@ -35,6 +22,6 @@ const mapDispatchToProps = dispatch => {
 
 
 export default connect(
-    mapStateToProps,
+    null,
     mapDispatchToProps
 )(TabContent);
