@@ -2,9 +2,9 @@ import React, {useEffect} from 'react';
 import PropTypes from 'prop-types';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import { makeStyles } from '@material-ui/core/styles';
-import TopBar from './TopBar';
-import TabContent from './TabContent';
-import AlbumGrid from './AlbumGrid';
+import TopBar from './containers/TopBarContainer';
+import TabContent from './containers/TabContent';
+import MusicGrid from './MusicGrid';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -14,7 +14,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const App = ({ 
-  topAlbums,
+  musicResult,
   onLoad,
 }) => { 
   const classes = useStyles();
@@ -27,21 +27,19 @@ const App = ({
       <div className={classes.root}>
         <TopBar />
         <TabContent />
-        <AlbumGrid albums={topAlbums} />
+        <MusicGrid musics={musicResult} />
       </div>
     </>
   );
 }
 
 App.defaultProps = {
-  topAlbums: [],
+  musicResult: [],
 };
 
 App.propTypes = {
-  topAlbums: PropTypes.array,
-  topSongs: PropTypes.array,
+  musicResult: PropTypes.array,
   onLoad: PropTypes.func,
-  onSearch: PropTypes.func,
 };
 
 export default App;

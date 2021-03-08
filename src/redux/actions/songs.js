@@ -20,10 +20,10 @@ export const findTopSongs = () => {
   };
 };
 
-export const applyFilterResult = (filter) => {
+export const applyFilterResult = (fullTextSearch) => {
   return {
     type: APPLY_FILTER_RESULTS,
-    filter,
+    fullTextSearch,
   };
 };
 

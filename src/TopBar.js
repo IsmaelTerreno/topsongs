@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { fade, makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -9,6 +10,8 @@ import LogoImg from './img/icon-app.png'
 import SearchIcon from '@material-ui/icons/Search';
 import InputBase from '@material-ui/core/InputBase';
 import Hidden from '@material-ui/core/Hidden';
+import DialogTitle from '@material-ui/core/DialogTitle';
+import Dialog from '@material-ui/core/Dialog';
 import { MAIN_APP_NAME } from './config';
 
 const useStyles = makeStyles((theme) => ({
@@ -65,8 +68,28 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-const TopBar = () => {
+const TopBar = ({onSearch}) => {
+  const [open, setOpen] = React.useState(false);
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+  const handleClose = () => {
+    setOpen(false);
+  };
   const classes = useStyles();
+  const SearchInput = () => (
+    <InputBase
+        placeholder="Search…"
+        classes={{
+            root: classes.inputRoot,
+            input: classes.inputInput,
+        }}
+        inputProps={{ 'aria-label': 'search' }}
+        onChange={(e)=>{
+            onSearch(e.target.value);
+        }}
+        />
+  );
   return (
     <div className={classes.root}>
       <AppBar position="fixed">
@@ -82,25 +105,25 @@ const TopBar = () => {
                     <div className={classes.searchIcon}>
                         <SearchIcon />
                     </div>
-                    <InputBase
-                    placeholder="Search…"
-                    classes={{
-                        root: classes.inputRoot,
-                        input: classes.inputInput,
-                    }}
-                    inputProps={{ 'aria-label': 'search' }}
-                    />
+                    <SearchInput />
                 </div>
             </Hidden>
             <Hidden only={['xl', 'lg', 'sm', 'md']}>
-                <IconButton aria-label="search" color="inherit">
+                <IconButton aria-label="search" color="inherit" onClick={handleClickOpen} >
                     <SearchIcon />
                 </IconButton>
+                <Dialog onClose={handleClose} aria-labelledby="dialog-title" open={open}>
+                    <SearchInput />
+                </Dialog>
             </Hidden>
         </Toolbar>
       </AppBar>
     </div>
   );
+};
+
+TopBar.propTypes = {
+    onSearch: PropTypes.func,
 };
 
 export default TopBar;

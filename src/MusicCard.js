@@ -24,16 +24,17 @@ const useStyles = makeStyles({
     width: '137px',
     textAlign: 'center',
     fontWeight: 'bold',
+    fontSize: '12px'
   },
   cardContent:{
     height: '90px',
   }
 });
 
-const AlbumCard = ({ image, title }) => {
+const MusicCard = ({ image, title, outsideLink }) => {
   const classes = useStyles();
   return (
-    <Card className={classes.root}>
+    <Card className={classes.root} onClick={()=>{ window.open(outsideLink); }}>
       <CardActionArea>
         <CardMedia
           className={classes.media}
@@ -41,7 +42,7 @@ const AlbumCard = ({ image, title }) => {
           title={title}
         />
         <CardContent className={classes.cardContent}>
-          <Typography variant="subtitle" gutterBottom className={classes.title} >
+          <Typography variant="inherit" gutterBottom className={classes.title} >
             {title}
           </Typography>
         </CardContent>
@@ -50,13 +51,11 @@ const AlbumCard = ({ image, title }) => {
   );
 }
 
-AlbumCard.defaultProps = {
-};
-
-AlbumCard.propTypes = {
+MusicCard.propTypes = {
     image: PropTypes.string,
-    title: PropTypes.string
+    title: PropTypes.string,
+    outsideLink: PropTypes.string,
 };
   
 
-export default AlbumCard;
+export default MusicCard;

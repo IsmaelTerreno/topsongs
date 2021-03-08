@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
 import {
   Tab,
@@ -15,7 +16,11 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-const TabContent = () => {
+const TabContent = ({
+  onClickTopAlbums,
+  onClickTopSongs,
+  onClickFavorite
+}) => {
   const classes = useStyles();
   const [value, setValue] = React.useState(0);
   const handleChange = (event, newValue) => {
@@ -32,12 +37,30 @@ const TabContent = () => {
         onChange={handleChange}
         aria-label="disabled tabs example"
       >
-        <Tab label="Top Albums" className={classes.tab} />
-        <Tab label="Top Songs" className={classes.tab} />
-        <Tab label="Favorite" className={classes.tab} />
+        <Tab 
+          onClick={onClickTopAlbums} 
+          label="Top Albums" 
+          className={classes.tab} 
+        />
+        <Tab 
+          onClick={onClickTopSongs} 
+          label="Top Songs" 
+          className={classes.tab} 
+        />
+        <Tab 
+          onClick={onClickFavorite} 
+          label="Favorite" 
+          className={classes.tab} 
+        />
       </Tabs>
     </Paper>
   );
+};
+
+TabContent.propTypes = {
+  onClickTopAlbums: PropTypes.func,
+  onClickTopSongs: PropTypes.func,
+  onClickFavorite: PropTypes.func,
 };
 
 export default TabContent;

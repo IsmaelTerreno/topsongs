@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
-import AlbumCard from './AlbumCard';
+import MusicCard from './MusicCard';
 import Grow from '@material-ui/core/Grow';
 
 const useStyles = makeStyles((theme) => ({
@@ -22,7 +22,7 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-const AlbumGrid = ({albums}) => {
+const MusicGrid = ({musics}) => {
   const classes = useStyles();
   let delayEffectTime = 100;
   return (
@@ -34,19 +34,20 @@ const AlbumGrid = ({albums}) => {
         alignItems="center"
         spacing={2}
       >
-        {albums && albums.map((album, idx) => {
+        { musics && musics.map((music, idx) => {
           delayEffectTime += 150;
           return(
-            <Grid item xs={6} xl={2} sm={3} lg={2} key={idx + album.title} >
+            <Grid item xs={6} xl={2} sm={3} lg={2} key={idx + music.title} >
                 <Grow
                     in
                     style={{ transformOrigin: '0 0 0' }}
                     timeout={delayEffectTime} 
                 >
                     <div className={classes.itemCard}>
-                        <AlbumCard 
-                            title={album.title}
-                            image={album.coveImage} 
+                        <MusicCard 
+                            title={music.title}
+                            image={music.coveImage} 
+                            outsideLink={music.outsideLink}
                         />
                     </div>
                 </Grow>
@@ -58,12 +59,12 @@ const AlbumGrid = ({albums}) => {
   );
 };
 
-AlbumGrid.defaultProps = {
-  albums: [],
+MusicGrid.defaultProps = {
+  musics: [],
 };
 
-AlbumGrid.propTypes = {
-  albums: PropTypes.array,
+MusicGrid.propTypes = {
+  musics: PropTypes.array,
 };
 
-export default AlbumGrid;
+export default MusicGrid;
