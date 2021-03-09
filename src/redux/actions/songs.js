@@ -7,6 +7,7 @@ export const FIND_TOP_SONGS_FAIL = 'FIND_TOP_SONGS_FAIL';
 export const APPLY_FILTER_RESULTS = 'APPLY_FILTER_RESULTS';
 export const ADD_OR_REMOVE_FROM_FAVORITE = 'ADD_OR_REMOVE_FROM_FAVORITE';
 export const LOAD_FAVORITES = 'LOAD_FAVORITES';
+export const SET_VIEW = 'SET_VIEW';
 
 
 export const findTopAlbums = () => {
@@ -41,3 +42,9 @@ export const loadFavorites = () => {
   };
 };
 
+export const setView = (view) => {
+  return {
+    type: SET_VIEW,
+    view
+  };
+};

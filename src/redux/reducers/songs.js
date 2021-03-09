@@ -4,11 +4,16 @@ import {
   APPLY_FILTER_RESULTS,
   ADD_OR_REMOVE_FROM_FAVORITE,
   LOAD_FAVORITES,
+  SET_VIEW,
 } from '../actions/songs';
 import {createSelector} from 'reselect';
 
 export const TOP_ALBUMS_FILTER = 'TOP_ALBUMS_FILTER';
 export const TOP_SONGS_FILTER = 'TOP_SONGS_FILTER';
+export const VIEW_TOP_ALBUMS = 'VIEW_TOP_ALBUMS';
+export const VIEW_TOP_SONGS = 'VIEW_TOP_SONGS';
+export const VIEW_FAVORITES = 'VIEW_FAVORITES';
+
 
 const initState = {
   albums:[],
@@ -19,6 +24,7 @@ const initState = {
   },
   favorite:[],
   currentResult: [],
+  view: VIEW_TOP_ALBUMS,
 };
 
 export const SongsReducer = (state = initState, action) => {
@@ -72,7 +78,13 @@ export const SongsReducer = (state = initState, action) => {
       return {
         ...state,
         currentResult: [...state.favorite],
-      };   
+      };
+
+    case SET_VIEW:
+      return {
+        ...state,
+        view: action.view,
+      };    
     default:
       return state;
   }
@@ -83,6 +95,7 @@ const songsSelector = state => state.songs.songs;
 const filterSelector = state => state.songs.filter;
 const favoriteSelector = state => state.songs.favorite;
 const currentResultSelector = state => state.songs.currentResult;
+const viewSelector = state => state.songs.view;
 
 
 export const getAlbums = createSelector(
@@ -108,4 +121,9 @@ export const getFavorite = createSelector(
 export const getCurrentResult = createSelector(
   currentResultSelector,
   currentResult => currentResult
+);
+
+export const getView = createSelector(
+  viewSelector,
+  view => view
 );

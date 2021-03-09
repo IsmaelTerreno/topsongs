@@ -68,7 +68,7 @@ FavoriteButton.propTypes = {
   onClick: PropTypes.func,
 };
 
-const MusicCard = ({ music, favorites, onClickFavorite }) => {
+const MusicCard = ({ music, favorites, onClickFavorite, view }) => {
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
   const isSavedAlready = favorites.filter(f=> f.outsideLink === music.outsideLink).length > 0;
@@ -88,7 +88,7 @@ const MusicCard = ({ music, favorites, onClickFavorite }) => {
         isSavedAlready={isSavedAlready}
         onClick={()=>{
           handleClick();
-          onClickFavorite(music);
+          onClickFavorite(music, view);
         }}/>
         <CardActionArea onClick={()=>{ 
           window.open(music.outsideLink); 
@@ -134,6 +134,7 @@ MusicCard.propTypes = {
     music: PropTypes.object,
     onClickFavorite: PropTypes.func,
     favorites: PropTypes.array,
+    view: PropTypes.string
 };
   
 
