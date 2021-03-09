@@ -38,16 +38,19 @@ const TabContent = ({
         aria-label="disabled tabs example" 
       >
         <Tab 
+          data-testid="TopAlbumsTab"
           onClick={onClickTopAlbums} 
           label="Top Albums" 
           className={classes.tab} 
         />
         <Tab 
+          data-testid="TopSongsTab"
           onClick={onClickTopSongs} 
           label="Top Songs" 
           className={classes.tab} 
         />
         <Tab 
+          data-testid="FavoriteTab"
           onClick={onClickFavorite} 
           label="Favorite" 
           className={classes.tab} 

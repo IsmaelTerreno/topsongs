@@ -56,7 +56,6 @@ const useStyles = makeStyles((theme) => ({
     },
     inputInput: {
         padding: theme.spacing(1, 1, 1, 0),
-        // vertical padding + font size from searchIcon
         paddingLeft: `calc(1em + ${theme.spacing(4)}px)`,
         transition: theme.transitions.create('width'),
         width: '100%',
@@ -80,6 +79,7 @@ const TopBar = ({onSearch}) => {
   const classes = useStyles();
   const SearchInput = () => (
     <InputBase
+        data-testid="SearchInput"
         placeholder="Search…"
         classes={{
             root: classes.inputRoot,
@@ -92,16 +92,16 @@ const TopBar = ({onSearch}) => {
         />
   );
   return (
-    <div className={classes.root} data-testid="TopBar">
+    <div id="TopBar" className={classes.root} data-testid="TopBar">
       <AppBar position="fixed">
         <Toolbar className={classes.topBar}>
           <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
-            <Avatar alt="Remy Sharp" src={LogoImg} />
+            <Avatar data-testid="Avatar" alt={MAIN_APP_NAME} src={LogoImg} />
           </IconButton>
           <Typography variant="h6" className={classes.title}>
             { MAIN_APP_NAME }
           </Typography>
-            <Hidden only={['xs']}>
+            <Hidden only={['xs']} data-testid="Hidden1" >
                 <div className={classes.search}>
                     <div className={classes.searchIcon}>
                         <SearchIcon />

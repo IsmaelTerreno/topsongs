@@ -47,7 +47,8 @@ const FavoriteButton = ({music, onClick, isSavedAlready}) =>{
     setIsSaved(!isSaved);
   };
   return (
-    <IconButton 
+    <IconButton
+      data-testid="FavoriteButton"
       onClick={()=>{
         handleClick();
         onClick(music);
@@ -83,29 +84,31 @@ const MusicCard = ({ music, favorites, onClickFavorite, view }) => {
   };
   return (
     <>
-      <Card className={classes.root}>
+      <Card className={classes.root} data-testid="MusicCard">
         <FavoriteButton 
         isSavedAlready={isSavedAlready}
         onClick={()=>{
           handleClick();
           onClickFavorite(music, view);
         }}/>
-        <CardActionArea onClick={()=>{ 
+        <CardActionArea  onClick={()=>{ 
           window.open(music.outsideLink, '_blank'); 
         }}>
           <CardMedia
+            data-testid="CoverImage"
             className={classes.media}
             image={music.coveImage}
             title={music.title}
           />
         </CardActionArea>
         <CardContent className={classes.cardContent}>
-          <Typography variant="inherit" gutterBottom className={classes.title} >
+          <Typography data-testid="titleMusic" variant="inherit" gutterBottom className={classes.title} >
             {music.title}
           </Typography>
         </CardContent>
       </Card>
       <Snackbar
+        data-testid="Snackbar"
         anchorOrigin={{
           vertical: 'bottom',
           horizontal: 'left',

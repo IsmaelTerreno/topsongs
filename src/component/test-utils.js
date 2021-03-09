@@ -1,5 +1,5 @@
 import React from "react";
-import { render, screen } from '@testing-library/react';
+import { render, screen, fireEvent } from '@testing-library/react';
 import { createStore } from "redux";
 import { Provider } from "react-redux";
 import reducer from "../redux/reducers";
@@ -32,5 +32,6 @@ const renderWithState = (
 export {
   screen,
   renderWithState,
-  initState
+  initState,
+  fireEvent
 };
