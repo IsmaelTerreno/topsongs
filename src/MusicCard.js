@@ -91,7 +91,7 @@ const MusicCard = ({ music, favorites, onClickFavorite, view }) => {
           onClickFavorite(music, view);
         }}/>
         <CardActionArea onClick={()=>{ 
-          window.open(music.outsideLink); 
+          window.open(music.outsideLink, '_blank'); 
         }}>
           <CardMedia
             className={classes.media}
