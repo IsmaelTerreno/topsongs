@@ -28,14 +28,14 @@ const TabContent = ({
   };
 
   return (
-    <Paper square>
+    <Paper square data-testid="TabContent">
       <Tabs
         className={classes.tabs}
         value={value}
         indicatorColor="primary"
         textColor="primary"
         onChange={handleChange}
-        aria-label="disabled tabs example"
+        aria-label="disabled tabs example" 
       >
         <Tab 
           onClick={onClickTopAlbums} 

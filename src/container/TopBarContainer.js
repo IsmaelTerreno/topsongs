@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import TopBar from '../TopBar';
+import TopBar from '../component/TopBar';
 import { applyFilterResult } from "../redux/actions/songs";
 
 const mapDispatchToProps = dispatch => {

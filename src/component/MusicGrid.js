@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
-import MusicCard from './containers/MusicCardContainer';
+import MusicCard from '../container/MusicCardContainer';
 import Grow from '@material-ui/core/Grow';
 
 const useStyles = makeStyles((theme) => ({
@@ -26,7 +26,7 @@ const MusicGrid = ({musics}) => {
   const classes = useStyles();
   let delayEffectTime = 100;
   return (
-    <div className={classes.root}>
+    <div className={classes.root} data-testid="MusicGrid">
       <Grid 
         container
         direction="row"

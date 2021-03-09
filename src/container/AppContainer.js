@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import App from '../App';
+import App from '../component/App';
 import { findTopAlbums } from "../redux/actions/songs";
 import { getCurrentResult } from "../redux/reducers/songs";
 

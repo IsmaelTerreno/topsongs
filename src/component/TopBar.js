@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { fade, makeStyles } from '@material-ui/core/styles';
-import LogoImg from './img/icon-app.png'
+import LogoImg from '../img/icon-app.png'
 import SearchIcon from '@material-ui/icons/Search';
 import {
     Dialog, 
@@ -13,7 +13,7 @@ import {
     AppBar, 
     Avatar
 } from '@material-ui/core';
-import { MAIN_APP_NAME } from './config';
+import { MAIN_APP_NAME } from '../config';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -92,7 +92,7 @@ const TopBar = ({onSearch}) => {
         />
   );
   return (
-    <div className={classes.root}>
+    <div className={classes.root} data-testid="TopBar">
       <AppBar position="fixed">
         <Toolbar className={classes.topBar}>
           <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">

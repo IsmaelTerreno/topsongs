@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import MusicCard from '../MusicCard';
+import MusicCard from '../component/MusicCard';
 import { addToFavorite, loadFavorites } from "../redux/actions/songs";
 import { getFavorite, getView, VIEW_FAVORITES } from "../redux/reducers/songs";
 

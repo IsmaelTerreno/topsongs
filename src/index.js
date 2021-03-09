@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Provider from 'react-redux/es/components/Provider';
 import './index.css';
-import App from './containers/AppContainer';
+import App from './container/AppContainer';
 import { MainStore } from './redux/store/configureStore';
 import reportWebVitals from './reportWebVitals';
 const store = MainStore();

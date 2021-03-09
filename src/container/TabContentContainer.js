@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import TabContent from '../TabContent';
+import TabContent from '../component/TabContent';
 import { 
     findTopAlbums,
     findTopSongs,
