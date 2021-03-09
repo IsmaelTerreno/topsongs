@@ -2,7 +2,8 @@ import {
   FIND_TOP_ALBUMS_SUCCESS,
   FIND_TOP_SONGS_SUCCESS,
   APPLY_FILTER_RESULTS,
-  ADD_TO_FAVORITE,
+  ADD_OR_REMOVE_FROM_FAVORITE,
+  LOAD_FAVORITES,
 } from '../actions/songs';
 import {createSelector} from 'reselect';
 
@@ -55,10 +56,22 @@ export const SongsReducer = (state = initState, action) => {
             fullTextSearch: action.fullTextSearch,
           },
         };   
-    case ADD_TO_FAVORITE:
+    case ADD_OR_REMOVE_FROM_FAVORITE:
+      let favorites = [...state.favorite];
+      const isAlreadyAdded = favorites.filter(f=> f.outsideLink === action.favorite.outsideLink).length > 0;
+      if(!isAlreadyAdded){
+        favorites.push(action.favorite);
+      } else {
+        favorites = favorites.filter(f=> f.outsideLink !== action.favorite.outsideLink);
+      }
       return {
         ...state,
-        favorite: action.favorite
+        favorite: [...favorites]
+      };
+    case LOAD_FAVORITES:
+      return {
+        ...state,
+        currentResult: [...state.favorite],
       };   
     default:
       return state;

@@ -3,7 +3,7 @@ import TabContent from '../TabContent';
 import { 
     findTopAlbums,
     findTopSongs,
-    addToFavorite
+    loadFavorites
 } from "../redux/actions/songs";
   
 const mapDispatchToProps = dispatch => {
@@ -14,8 +14,8 @@ const mapDispatchToProps = dispatch => {
         onClickTopSongs: () => {
             dispatch(findTopSongs());
         },
-        onClickFavorite: (song) => {
-            dispatch(addToFavorite(song));
+        onClickFavorite: () => {
+            dispatch(loadFavorites());
         },
     };
 };

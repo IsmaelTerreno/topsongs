@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
-import MusicCard from './MusicCard';
+import MusicCard from './containers/MusicCardContainer';
 import Grow from '@material-ui/core/Grow';
 
 const useStyles = makeStyles((theme) => ({
@@ -44,11 +44,7 @@ const MusicGrid = ({musics}) => {
                     timeout={delayEffectTime} 
                 >
                     <div className={classes.itemCard}>
-                        <MusicCard 
-                            title={music.title}
-                            image={music.coveImage} 
-                            outsideLink={music.outsideLink}
-                        />
+                        <MusicCard music={music} />
                     </div>
                 </Grow>
             </Grid>
