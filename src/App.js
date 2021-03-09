@@ -10,6 +10,7 @@ const useStyles = makeStyles((theme) => ({
   root: {
     background: 'linear-gradient(180deg,#1e3264,#121212 40%)',
     paddingTop: '64px',
+    minHeight: '1200px',
   },
 }));
 
