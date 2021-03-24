@@ -27,3 +27,6 @@ In order to help you fit the test in around other commitments, there's no time l
 Live demo here in heroku:
 
 https://mr-dog-app.herokuapp.com
+
+
+NOTE: Only the first time it may take about 25 seconds and you may have to reload the page 2 or 3 times, after that the free heroku server is more than fine :).
